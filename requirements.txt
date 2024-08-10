@@ -1,0 +1,8 @@
+Pillow  # For image processing (monochrome, inversion, flipping, mirroring, etc.)
+ExifRead  # For reading and manipulating EXIF data (GPS metadata)
+pyEXIFTool  # Alternative for more advanced EXIF manipulation
+numpy  # For adding noise to images
+python-dateutil  # For handling ISO dates
+pytest
+piexif
+tqdm
