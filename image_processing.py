@@ -3,8 +3,6 @@ import os
 import sys
 from pathlib import Path
 
-import piexif
-
 from experiments.inverted import process_inverted
 from experiments.color_bands import process_color_bands
 from experiments.no_gps import process_no_gps

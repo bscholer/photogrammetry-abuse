@@ -4,23 +4,12 @@ import piexif
 from PIL import Image
 from tqdm import tqdm
 
+from util import save_without_thumbnail
+
 
 def process_color_bands(input_images, output_dir, bands_to_keep):
     for img_path in tqdm(input_images, desc='Color manipulation'):
         img = Image.open(img_path)
-        exif_data = piexif.load(img.info.get('exif', b''))
-
-        # Remove thumbnail and preview image data
-        if '1st' in exif_data:
-            del exif_data['1st']  # Remove thumbnail data
-
-        # Optional: remove specific preview image tags if needed
-        # This might be different depending on how the preview images are stored
-        if 'Exif' in exif_data:
-            exif_exif_ifd = exif_data['Exif']
-            if piexif.ExifIFD.MakerNote in exif_exif_ifd:
-                del exif_exif_ifd[piexif.ExifIFD.MakerNote]  # Example of removing a specific preview tag
-
         r, g, b = img.split()
 
         # Apply the bands to keep
@@ -33,8 +22,5 @@ def process_color_bands(input_images, output_dir, bands_to_keep):
 
         # Save the processed image
         output_path = Path(output_dir) / img_path.name
-        # recolored_img.save(output_path)
-        exif_filtered = piexif.dump(exif_data)
-
-        recolored_img.save(output_path, exif=exif_filtered)
+        save_without_thumbnail(recolored_img, output_path)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Paths
-INPUT_DIR="./images"
+INPUT_DIR="./images_subset"
 OUTPUT_BASE_DIR="./output"
 SCRIPT="python3 image_processing.py"
 
