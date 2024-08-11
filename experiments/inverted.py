@@ -2,10 +2,11 @@ import random
 from pathlib import Path
 
 from PIL import Image
+from tqdm import tqdm
 
 
 def process_inverted(input_images, output_dir, flip_percentage, mirror_percentage):
-    for img_path in input_images:
+    for img_path in tqdm(input_images, desc='Inverting images'):
         img = Image.open(img_path)
         filename = img_path.stem
         should_flip = random.random() < flip_percentage / 100

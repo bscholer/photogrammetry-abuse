@@ -3,10 +3,11 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from tqdm import tqdm
 
 
 def process_noise(input_images, output_dir, noise_level):
-    for img_path in input_images:
+    for img_path in tqdm(input_images, desc="Adding noise to images"):
         img = Image.open(img_path)
         img_array = np.array(img)
 

@@ -3,7 +3,7 @@
 # Paths
 INPUT_DIR="./images"
 OUTPUT_BASE_DIR="./output"
-SCRIPT="python your_script.py"  # Replace with the actual name of your script
+SCRIPT="python3 image_processing.py"
 
 # Output directories for each experiment
 OUTPUT_MONOCHROME="${OUTPUT_BASE_DIR}/monochrome"
@@ -35,7 +35,7 @@ $SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_NO_GPS" -e no-gps -p 50
 
 # Run timestamp experiment
 clear_output_dir "$OUTPUT_TIMESTAMP"
-$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_TIMESTAMP" -e timestamp -s "2024-01-01" -e "2024-01-31"
+$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_TIMESTAMP" -e timestamp --start-date "2024-01-01" --end-date "2024-01-31"
 
 # Run noise experiment
 clear_output_dir "$OUTPUT_NOISE"

@@ -4,13 +4,14 @@ from pathlib import Path
 
 from PIL import Image
 import piexif
+from tqdm import tqdm
 
 
 def process_timestamp(input_images, output_dir, start_date, end_date):
     start_dt = datetime.fromisoformat(start_date)
     end_dt = datetime.fromisoformat(end_date)
 
-    for img_path in input_images:
+    for img_path in tqdm(input_images, desc="Setting random timestamps for images"):
         img = Image.open(img_path)
         exif_dict = piexif.load(img.info['exif'])
 

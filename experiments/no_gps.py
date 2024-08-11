@@ -3,10 +3,11 @@ from pathlib import Path
 
 from PIL import Image
 import piexif
+from tqdm import tqdm
 
 
 def process_no_gps(input_images, output_dir, gps_removal_percentage):
-    for img_path in input_images:
+    for img_path in tqdm(input_images, desc="Removing GPS data from images"):
         img = Image.open(img_path)
         exif_dict = piexif.load(img.info['exif'])
 

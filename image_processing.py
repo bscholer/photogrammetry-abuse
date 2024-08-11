@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from experiments.inverted import process_inverted
-from experiments.monochrome import process_monochrome
+from experiments.monochrome import process_color
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
 from experiments.timestamp import process_timestamp
@@ -61,9 +61,9 @@ def main():
                         help="Percentage of images to remove GPS metadata from.")
 
     # Timestamp options
-    parser.add_argument("-s", "--start-date", type=validate_iso_date,
+    parser.add_argument("--start-date", type=validate_iso_date,
                         help="Start date (ISO format) for random timestamp assignment.")
-    parser.add_argument("-e", "--end-date", type=validate_iso_date,
+    parser.add_argument("--end-date", type=validate_iso_date,
                         help="End date (ISO format) for random timestamp assignment.")
 
     # Noise options
@@ -85,16 +85,15 @@ def main():
         print("Error: The sum of --flip and --mirror percentages cannot exceed 100.")
         sys.exit(1)
 
-    # Collect all image files from the input directory
-    input_images = list(Path(args.input).glob("*.jpg")) + list(Path(args.input).glob("*.jpeg"))
-
-    if not input_images:
-        print(f"Error: No images found in the input directory {args.input}")
-        sys.exit(1)
+    # Collect all image files from the input directory with specified types
+    image_extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG']
+    input_images = []
+    for ext in image_extensions:
+        input_images.extend(list(Path(args.input).glob(f"*{ext}")))
 
     # Execute the selected experiment
     if args.experiment == "monochrome":
-        process_monochrome(input_images, args.output, args.bands_to_keep)
+        process_color(input_images, args.output, args.bands_to_keep)
     elif args.experiment == "inverted":
         process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "no-gps":

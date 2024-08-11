@@ -9,7 +9,7 @@ import numpy as np
 from datetime import datetime
 
 # Assume we have implemented these functions in our script
-from image_processing import process_monochrome, process_inverted, process_no_gps, process_timestamp, process_noise
+from image_processing import process_color, process_inverted, process_no_gps, process_timestamp, process_noise
 
 
 # Fixtures for setting up temporary directories and files
@@ -42,7 +42,7 @@ def test_process_monochrome(setup_sample_images, setup_temp_dir, bands_to_keep, 
     output_dir = Path(setup_temp_dir) / "output"
     os.makedirs(output_dir, exist_ok=True)
 
-    process_monochrome(setup_sample_images, output_dir, bands_to_keep)
+    process_color(setup_sample_images, output_dir, bands_to_keep)
 
     for i, image_path in enumerate(Path(output_dir).glob("*.jpg")):
         img = Image.open(image_path)

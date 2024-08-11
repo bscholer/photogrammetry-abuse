@@ -1,10 +1,11 @@
 from pathlib import Path
 
 from PIL import Image
+from tqdm import tqdm
 
 
-def process_monochrome(input_images, output_dir, bands_to_keep):
-    for img_path in input_images:
+def process_color(input_images, output_dir, bands_to_keep):
+    for img_path in tqdm(input_images, desc='Color manipulation'):
         img = Image.open(img_path)
         r, g, b = img.split()
 
