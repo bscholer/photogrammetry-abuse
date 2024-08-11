@@ -3,8 +3,10 @@ import os
 import sys
 from pathlib import Path
 
+import piexif
+
 from experiments.inverted import process_inverted
-from experiments.monochrome import process_color
+from experiments.color_bands import process_color
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
 from experiments.timestamp import process_timestamp
