@@ -35,8 +35,8 @@ clear_output_dir "$OUTPUT_INVERTED"
 $SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_INVERTED" -e inverted -f 50 -m 50
 
 # Run no-gps experiment
-#clear_output_dir "$OUTPUT_NO_GPS"
-#$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_NO_GPS" -e no-gps -p 50
+clear_output_dir "$OUTPUT_NO_GPS"
+$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_NO_GPS" -e no-gps -p 50
 
 # Run timestamp experiment
 clear_output_dir "$OUTPUT_TIMESTAMP"
