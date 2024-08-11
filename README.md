@@ -142,25 +142,42 @@ These are the results of a handful of experiments!
 Overall, I'm super impressed with how well this map turned out. It isn't hugely surprising given how detailed I was when flying it, but impressive nevertheless!
 <img width="982" alt="image" src="https://github.com/user-attachments/assets/fa4d4a22-9f2c-4d6f-ba51-8ed040e96f6b">
 
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/6ed2c63865_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=GEd3PT/18nVo/lJXmYKTElJgUNOn0mmdhz9PTMNklDj1sSbG9CALVzqmMEiZKb4AvqySKTPamj5qzLJQn7hRUgq9qIWHqTUAzRD1te7OElb3wi6JwqRqd0zaloBu/pNe+YU2FCc++0UMkPvyELVqCo4Rr/xKPcbQCVlBs1oIqB421Dh+xB/PfKt35x9kAhqFMAWqPK/Bh2xHwd3V1jG71UercSt41yk/xf2TPzN1iJLUULFE1lGZX6D3qqJI2XlnqM+DpMhP5qANUUb3/+xvNBln21uaHY+cXCm+xmO+4fZmsSgtfs+/fyz3QMMdcFthUvE4ThkDXD6pvH7hRgPRGA%3D%3D)
+
 ### Color Band Removal - Removing Blue
 
 I'm pretty surprised this one turned out as well as it did, but it makes sense. It's just yellow after all!
 <img width="828" alt="image" src="https://github.com/user-attachments/assets/55664462-dd01-43ff-b37d-7fdb1289ecbb">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/1c9d2fe3bc_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=EDYWUy7xjtpAKZKW6hznembTCliDHD1OeboscpMIrrXJMMUG/gtjmdmWqj51LvdeTfXmL0+2G6sf4ppX8I5Ww7gGQx/sMHDkf2/aunXH8fCUCd3dOiyxPxzJVC4CkKAksfazgGXlrs0FQO09Rmrm1VhGPmIIYK2/m2CYerwgclwnzDTh0QNQ0zNw7rkdOzAXYyTr4BMGSO38z9gqV+5w8dJUntW0PL+FMiolwv95+pWtxe+F1teJwkqydepBy2/EzzjqEdJGUBSokzbjAR86Vn8vwowoEkcepEFdfuix7y92bgAN3OTWEE6J/WfhIrnr0tCaAvno2N+Iz3o5yv6qRw%3D%3D)
 
 ### Color Band Removal - Removing Blue and Green
 
 Similar story to removing blue, but this one turned out just fine, just very red!
 <img width="820" alt="image" src="https://github.com/user-attachments/assets/9f1a93ad-9106-475b-a6d4-1532c96b7da7">
 
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/a1dec20914_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=LymhCAG5wPVFu5ggjh2o2sIYZHcFy40l7Q33P4O4TKEWdlLfrL9bZXnCU1G5doPfBrRdmh9KseBQnt64HwVA9hdiCqn5qsUriD0EIA0FoZLAO52aepvKwab043PrF1XdTfBFU/iq7GhZYl03ysbeFgfhfG6R0KrD+vwyDo5POg47dLtcEx8SCaj4f2QNFSrmEFYzfHfOl++lvgQLWKottaKacyI/17p9pzJ/h89IKE3+kklhy/q0k3BY9qUT5Heuk8FuPjDQu1bAPHWQR61i8MIND9U8wBdthiIZ2cvstScFj8urDUEIB1pYEUDYjuouxMxQZgGNVILG23aRPd52SQ%3D%3D)
+
+### Monochrome - 50% of images
+
+Not all that surprising, but there are gray splotches throughout the map, but it looks like the stitcher had no problem with it!
+<img width="835" alt="image" src="https://github.com/user-attachments/assets/52a09e22-ebba-4dc4-9990-6f34b0dabd53">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/78d2cfde3d_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=U+RY4dIKKrQR+BKKGzxuNiMK2HiNL1AbB6o2kVVkJVdHl9A9KZIeQhotaV4tTZPgsqCdHYiwoBh/7iQWadWwXLThUXnawbXsgVfqsD4WMPbzOZpLxuBJDpnJiiPXCN5CthXDxWbo6N5cPWEAPVOu+NNVIiruUVAvTYW8ZLpS1uypDYNQrluC5fZs0j0glplb+xIOSI9g90W6zGBKZdss81wHIOg81gNr+08IuYIE2gdoFj72ZJKw/jkcyF71VNO62QvFlHKzVXJ3G1ce0lIzb+Gb+cQ/JzoXs43gs0t5Ht7avMdz0197+9Cf0+EgsabQUJbQkpV9AUHwAtSl/mNCjA%3D%3D)
+
 ### Inverted - 29% Flipped, 24% Mirrored, 21% Flipped and Mirrored
 
 This one is pretty hilarious! I really had no idea what it would do going into this, but the result isn't surprising. Although, the angle of the upside-down model is unexpected.
 <img width="1049" alt="image" src="https://github.com/user-attachments/assets/20b6bbf4-74d0-4450-b358-015874574e72">
 
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/19f351806c_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=wXQvTRCj0NMJf6NLWIeCoSORfRCof2B98blKURm8x80XWTTrMTil+REFb9milENsbqXm/FPI9lE/H52oVnA74K4soNn9aJ+8G21VyKWRAeEfjQzMobi/g5Y+bxRr7V+/5f9Q2rIqMX4QH6z+2vlE3plCdkzQVil1NcGMRrSRLLxDtLbMvkTnlwmXzMVr6pBdA14nUw7u2/2kHbh/WcdSocav0kmWn/5oNk1XCUX6ESyvwXa97hnbfOLGPgqju/IFMyLkbNCOnuXTcoQ7o5nC1ONWFFbEtC0dud6MPAl9KX0Z/FJMHNpuZX3qdI37//vz/+Er58VNn2PQyxw2qyHbNw%3D%3D)
+
 ### Noise - 25%
 
 Besides being a bit lighter looking, this one turned out just fine, much like the original.
 <img width="866" alt="image" src="https://github.com/user-attachments/assets/2dd52afb-d1a1-48e3-a4b7-9acf9a03f809">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/aae9b27395_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=cUtEQoGPzv6qBnzEx8FDfLilkt5itbwpPGqeQWjlIWo/xL/NH/yzjrchsmp5oYsM29IIcP8k6j2Po+EZTb7LocC9cxf/cpHqOzJo0QmVfTafj5/DondI0Ur0T4QhbSaL7bN3ThQA9kU3vYNLnjbV73BHuVGsSdlGNVuSAKmiWlzafGAYFHhu4QLKQtwz+EDMSBdPcuAKUZXghOgbp5FuCzixt97MiG6DK3BjkFCUa9x1/rpZsG+B52oC0Es7i2qfWzxGoW4GmQAMkwl9WN/z7LEJtPCaXwwHb9n+ga+SvI0mkM4F2bTWkQ3FO5zjPW0pzOCW9P/59Qywunq3wDtK8g%3D%3D)
 
 ### Remove GPS and Random Timestamps
 
