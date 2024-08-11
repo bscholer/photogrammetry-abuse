@@ -5,6 +5,7 @@ from pathlib import Path
 
 from experiments.inverted import process_inverted
 from experiments.color_bands import process_color_bands
+from experiments.monochrome import process_monochrome
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
 from experiments.timestamp import process_timestamp
@@ -43,7 +44,8 @@ def main():
                         help="Path to the output directory where processed images will be saved.")
 
     # Experiment selection
-    parser.add_argument("-e", "--experiment", required=True, choices=["color-bands", "inverted", "no-gps", "timestamp", "noise"],
+    parser.add_argument("-e", "--experiment", required=True,
+                        choices=["color-bands", "monochrome", "inverted", "no-gps", "timestamp", "noise"],
                         help="Select the experiment to perform on the images.")
 
     # Color bands options
@@ -56,9 +58,9 @@ def main():
     parser.add_argument("-m", "--mirror", type=validate_percentage, default=0,
                         help="Percentage of images to mirror horizontally.")
 
-    # No-GPS options
+    # No-GPS/Monochrome options
     parser.add_argument("-p", "--percentage", type=validate_percentage, default=0,
-                        help="Percentage of images to remove GPS metadata from.")
+                        help="Percentage of images to remove GPS metadata from or make monochrome.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -97,6 +99,8 @@ def main():
     # Execute the selected experiment
     if args.experiment == "color-bands":
         process_color_bands(input_images, args.output, args.bands_to_keep)
+    if args.experiment == "monochrome":
+        process_monochrome(input_images, args.output, args.percentage)
     elif args.experiment == "inverted":
         process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "no-gps":

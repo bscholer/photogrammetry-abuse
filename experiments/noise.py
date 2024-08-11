@@ -1,9 +1,10 @@
-import random
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
 from tqdm import tqdm
+
+from util import save_without_thumbnail
 
 
 def process_noise(input_images, output_dir, noise_level):
@@ -18,5 +19,7 @@ def process_noise(input_images, output_dir, noise_level):
 
         # Save the processed image
         noisy_img = Image.fromarray(img_array)
+        # Copy exif
+        noisy_img.info = img.info
         output_path = Path(output_dir) / img_path.name
-        noisy_img.save(output_path)
+        save_without_thumbnail(noisy_img, output_path)

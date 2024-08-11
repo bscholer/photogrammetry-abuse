@@ -1,7 +1,7 @@
 import piexif
 
 
-def save_without_thumbnail(img, output_path, include_gps=True):
+def save_without_thumbnail(img, output_path, include_gps=True, timestamp_str=None):
     exif_data = piexif.load(img.info.get('exif', b''))
 
     # Remove GPS data if include_gps is False
@@ -18,6 +18,11 @@ def save_without_thumbnail(img, output_path, include_gps=True):
         exif_exif_ifd = exif_data['Exif']
         if piexif.ExifIFD.MakerNote in exif_exif_ifd:
             del exif_exif_ifd[piexif.ExifIFD.MakerNote]  # Example of removing a specific preview tag
+
+    # Set the new timestamp if provided
+    if timestamp_str:
+        exif_data['Exif'][piexif.ExifIFD.DateTimeOriginal] = timestamp_str
+        exif_data['0th'][piexif.ImageIFD.DateTime] = timestamp_str
 
     exif_filtered = piexif.dump(exif_data)
 
