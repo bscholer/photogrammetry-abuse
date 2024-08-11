@@ -6,7 +6,7 @@ from pathlib import Path
 import piexif
 
 from experiments.inverted import process_inverted
-from experiments.color_bands import process_color
+from experiments.color_bands import process_color_bands
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
 from experiments.timestamp import process_timestamp
@@ -45,12 +45,12 @@ def main():
                         help="Path to the output directory where processed images will be saved.")
 
     # Experiment selection
-    parser.add_argument("-e", "--experiment", required=True, choices=["monochrome", "inverted", "no-gps", "timestamp", "noise"],
+    parser.add_argument("-e", "--experiment", required=True, choices=["color-bands", "inverted", "no-gps", "timestamp", "noise"],
                         help="Select the experiment to perform on the images.")
 
-    # Monochrome options
+    # Color bands options
     parser.add_argument("-b", "--bands-to-keep", type=str, choices=["r", "g", "b", "rg", "rb", "gb", "rgb"], default="rgb",
-                        help="Specify which color bands to keep for the monochrome experiment.")
+                        help="Specify which color bands to keep for the color bands experiment.")
 
     # Inverted options
     parser.add_argument("-f", "--flip", type=validate_percentage, default=0,
@@ -75,7 +75,7 @@ def main():
     args = parser.parse_args()
 
     # Additional validation
-    if args.experiment == "monochrome" and args.bands_to_keep not in ["r", "g", "b", "rg", "rb", "gb", "rgb"]:
+    if args.experiment == "color-bands" and args.bands_to_keep not in ["r", "g", "b", "rg", "rb", "gb", "rgb"]:
         print("Error: Invalid value for --bands-to-keep. Must be one of 'r', 'g', 'b', 'rg', 'rb', 'gb', or 'rgb'.")
         sys.exit(1)
 
@@ -93,9 +93,12 @@ def main():
     for ext in image_extensions:
         input_images.extend(list(Path(args.input).glob(f"*{ext}")))
 
+    # Create output directory if it doesn't exist
+    Path(args.output).mkdir(parents=True, exist_ok=True)
+
     # Execute the selected experiment
-    if args.experiment == "monochrome":
-        process_color(input_images, args.output, args.bands_to_keep)
+    if args.experiment == "color-bands":
+        process_color_bands(input_images, args.output, args.bands_to_keep)
     elif args.experiment == "inverted":
         process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "no-gps":

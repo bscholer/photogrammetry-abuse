@@ -6,7 +6,7 @@ OUTPUT_BASE_DIR="./output"
 SCRIPT="python3 image_processing.py"
 
 # Output directories for each experiment
-OUTPUT_MONOCHROME="${OUTPUT_BASE_DIR}/monochrome"
+OUTPUT_COLOR_BANDS="${OUTPUT_BASE_DIR}/color_bands"
 OUTPUT_INVERTED="${OUTPUT_BASE_DIR}/inverted"
 OUTPUT_NO_GPS="${OUTPUT_BASE_DIR}/no_gps"
 OUTPUT_TIMESTAMP="${OUTPUT_BASE_DIR}/timestamp"
@@ -21,9 +21,9 @@ clear_output_dir() {
     fi
 }
 
-# Run monochrome experiment
-clear_output_dir "$OUTPUT_MONOCHROME"
-$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_MONOCHROME" -e monochrome -b rg
+# Run color bands experiment
+clear_output_dir "$OUTPUT_COLOR_BANDS"
+$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_COLOR_BANDS" -e monochrome -b rg
 
 # Run inverted experiment
 clear_output_dir "$OUTPUT_INVERTED"
