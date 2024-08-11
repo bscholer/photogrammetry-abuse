@@ -20,4 +20,4 @@ def process_color(input_images, output_dir, bands_to_keep):
 
         # Save the processed image
         output_path = Path(output_dir) / img_path.name
-        monochrome_img.save(output_path)
+        recolored_img.save(output_path)
