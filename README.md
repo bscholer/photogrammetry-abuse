@@ -142,9 +142,10 @@ Here are some samples from the above example dataset, after running them through
 ![DJI_0181](https://github.com/user-attachments/assets/49d27173-fccc-4025-aa6e-9b47549318ab)
 
 ### Noise - 95%
+![DJI_0181](https://github.com/user-attachments/assets/a28e264d-b8b5-49c7-bcf5-2cd26548aee8)
 
-### Perspective Warp - Warp by 20%
-
+### Perspective Warp - Warp by 10%
+![warped_DJI_0181](https://github.com/user-attachments/assets/dbfda71b-5cf4-4e76-bbc0-b1b7985307c2)
 
 ### Remove GPS and Random Timestamps
 Both of these experiments only affect metadata, so the images look identical to the original.
