@@ -82,11 +82,11 @@ python3 image_processing.py --experiment noise \
 
 This experiment warps the perspective of a certain percentage of input images, by randomly selecting 4 points on the image and warping them by a provided `--warp-by` percentage.
 
-For example, to warp 50% of images by 20% (significant), run the following command:
+For example, to warp 75% of images by 10% (significant), run the following command:
 ```bash
 python3 image_processing.py --experiment perspective \
 --input <directory with images> --output <output directory> \
---percentage 50 --warp-by 20
+--percentage 75 --warp-by 10
 ```
 
 ### Remove GPS
