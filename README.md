@@ -30,7 +30,7 @@ python3 image_processing.py --help
 
 ### Color Band Removal
 
-This experiment removes the red, green, or blue color band from an image.
+This experiment removes the red, green, or blue color band(s) from an image.
 
 For example, to keep the red and green bands and remove the blue band from a set of images (yielding yellow images), run the following command:
 ```bash
