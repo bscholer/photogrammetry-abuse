@@ -6,7 +6,12 @@ This doesn't really have much practical purpose, but was really just intended to
 
 ![image](https://github.com/user-attachments/assets/2381e001-3f92-4ee0-80aa-714ce7e22a01)
 
-**[Skip to the (surprisingly good) results](#resultant-maps)**
+## Table of Contents
+- [Setup](#setup)
+- [Usage](#usage)
+- [Example Dataset](#example-dataset)
+- [Resultant Input Images](#resultant-input-images)
+- **[Resultant Maps](#resultant-maps)**
 
 ## Setup
 
