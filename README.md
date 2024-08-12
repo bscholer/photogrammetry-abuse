@@ -158,6 +158,9 @@ Here are some samples from the above example dataset, after running them through
 ### Perspective Warp - Warp by 10%
 ![warped_DJI_0181](https://github.com/user-attachments/assets/dbfda71b-5cf4-4e76-bbc0-b1b7985307c2)
 
+### Tilt - Random between -10° and 10°
+![tilted_DJI_0181](https://github.com/user-attachments/assets/0b168df3-0f6a-4396-ae2f-f1c6ac0edf61)
+
 ### Remove GPS and Random Timestamps
 Both of these experiments only affect metadata, so the images look identical to the original.
 
