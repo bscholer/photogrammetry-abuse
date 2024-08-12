@@ -226,7 +226,7 @@ While not _bad_, there is a noticeable degredadation in quality here, as we see 
 
 ### Perspective Warp - 5% Warp on 50% of Images
 
-It feels like I'm finally getting somewhere with breaking photogrammetry! Although, that said, this is still a pretty decent result for some pretty fouled up images. I'm impressed that it seems to have ignored the black borders around the photos.
+It feels like I'm finally getting somewhere with breaking photogrammetry! Although, that said, this is still a pretty decent result for some pretty fouled up images. I'm impressed that it seems to have mostly ignored the black borders around the photos, although you can see some odd coloration on the roof..
 
  <img width="750" alt="image" src="https://github.com/user-attachments/assets/a0f418dd-d9ae-45da-bbe0-8ea9f8672020">
 
@@ -244,7 +244,7 @@ Seems like perspective warp will really do a number on photogrammetry! This map 
 
 ### Tilt - Between -10° and 10° - 75% of Images
 
-Interestingly, this model turned out surprisingly good! However, you can really clearly see the black boundaries from the photo painted onto the roof. I would have expected something like this for the perspective warp experiments, but we see it in full effect here!
+Interestingly, this model turned out surprisingly good! However, you can really clearly see the black boundaries from the photo painted onto the roof. We see a bit of this on the perspective warp experiments, but we see it in full effect here!
 
 <img width="824" alt="image" src="https://github.com/user-attachments/assets/119c9dd8-164f-42ab-ba30-4e70e46a36c2">
 
