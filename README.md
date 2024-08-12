@@ -2,7 +2,7 @@
 
 This repo contains a framework for messing with images in a variety of ways, in an attempt to make DroneDeploy's photogrammetry engine do weird things. 
 
-This doesn't really have much practical purpose, but was really just intended to be a fun experiment.
+This doesn't really have much practical purpose, and was really just intended to be a fun experiment.
 
 ![image](https://github.com/user-attachments/assets/2381e001-3f92-4ee0-80aa-714ce7e22a01)
 
