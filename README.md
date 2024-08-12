@@ -107,7 +107,7 @@ To try all of the experiments at once, open `test.sh`, and modify the `INPUT_DIR
 bash test.sh
 ```
 
-## Example images
+## Example Dataset
 
 If you don't have a drone or test dataset, feel free to use these images of Baywatch Resort in Traverse City, MI, flown manually with a Mavic Air 2. Images are licensed under the CC BY (Attribution) license, play around and have fun! If you do something cool, make a PR!
 
@@ -115,7 +115,7 @@ If you don't have a drone or test dataset, feel free to use these images of Bayw
 
 Here are some samples from the above example dataset, after running them through `test.sh`!
 
-### Original
+### Original Image
 ![DJI_0181](https://github.com/user-attachments/assets/274e9ca4-dc03-4d8d-ad7e-405cae850721)
 
 ### Color Band Removal - Removing Blue
@@ -137,7 +137,7 @@ Both of these experiments only affect metadata, so the images look identical to 
 
 These are the results of a handful of experiments!
 
-### Original
+### Original Map
 
 Overall, I'm super impressed with how well this map turned out. It isn't hugely surprising given how detailed I was when flying it, but impressive nevertheless!
 <img width="982" alt="image" src="https://github.com/user-attachments/assets/fa4d4a22-9f2c-4d6f-ba51-8ed040e96f6b">
@@ -178,6 +178,13 @@ Besides being a bit lighter looking, this one turned out just fine, much like th
 <img width="866" alt="image" src="https://github.com/user-attachments/assets/2dd52afb-d1a1-48e3-a4b7-9acf9a03f809">
 
 [Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/aae9b27395_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723579200&Signature=cUtEQoGPzv6qBnzEx8FDfLilkt5itbwpPGqeQWjlIWo/xL/NH/yzjrchsmp5oYsM29IIcP8k6j2Po+EZTb7LocC9cxf/cpHqOzJo0QmVfTafj5/DondI0Ur0T4QhbSaL7bN3ThQA9kU3vYNLnjbV73BHuVGsSdlGNVuSAKmiWlzafGAYFHhu4QLKQtwz+EDMSBdPcuAKUZXghOgbp5FuCzixt97MiG6DK3BjkFCUa9x1/rpZsG+B52oC0Es7i2qfWzxGoW4GmQAMkwl9WN/z7LEJtPCaXwwHb9n+ga+SvI0mkM4F2bTWkQ3FO5zjPW0pzOCW9P/59Qywunq3wDtK8g%3D%3D)
+
+### Noise - 75%
+
+While not _bad_, there is a noticeable degredadation in quality here, as we see this large hole on the side of the building, and an overall decrease in quality from [Noise - 25%](#noise---25), and certainly from the [Original](#original-map).
+<img width="673" alt="image" src="https://github.com/user-attachments/assets/e1ef42d3-4b8d-4a40-b6ce-8589a480044d">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/90a36b2b7d_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723604400&Signature=k/UoUFiUK3FI0jRUAljOftOOEj06Ox7hWzswRPMrZfPKL0+ZBU0p0K5bjZRXQPNyK9q6XY4WtrSIVuMKm3j5ylyOLvjCre/3Qhqt6VMXgiMwRNk9qAI/r58GGXnhoDDmoIGllhbSjlc5XAMPzapVEI4tpFJDR/vDPpIf0BLECfC2uVtaIID1IXQYxuBOwACJ1XKkwt5/Luy2QSSb7L20NDKmYFLdRsRAP8DnKsu+gqIwsw4EiM7OGYK3FjIcpDyfO4qQT+zGclgM01hVTbv2XQqFr7ll6LJf1D34dyK/k1fsla/iseh39gpIcWhoSIZAohaqIv3X2+UmYBLK7j8Nlg%3D%3D)
 
 ### Remove GPS and Random Timestamps
 
