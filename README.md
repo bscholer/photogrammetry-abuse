@@ -89,6 +89,17 @@ python3 image_processing.py --experiment perspective \
 --percentage 75 --warp-by 10
 ```
 
+### Tilt
+
+This experiment tilts a certain percentage of input images by a random angle, between a specficied minimum and maximum angle, in degrees.
+
+For example, to tilt 75% of images by a random angle between -10 and 10 degrees, run the following command:
+```bash
+python3 image_processing.py --experiment tilt \
+--input <directory with images> --output <output directory> \
+--percentage 75 --max-tilt 10
+```
+
 ### Remove GPS
 
 This experiment removes the GPS data from a certain percentage of input images.

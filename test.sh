@@ -12,7 +12,8 @@ OUTPUT_INVERTED="${OUTPUT_BASE_DIR}/inverted"
 OUTPUT_NO_GPS="${OUTPUT_BASE_DIR}/no_gps"
 OUTPUT_TIMESTAMP="${OUTPUT_BASE_DIR}/timestamp"
 OUTPUT_NOISE="${OUTPUT_BASE_DIR}/noise"
-OUTPUT_PERSEPECTIVE="${OUTPUT_BASE_DIR}/perspective"
+OUTPUT_PERSPECTIVE="${OUTPUT_BASE_DIR}/perspective"
+OUTPUT_TILT="${OUTPUT_BASE_DIR}/tilt"
 
 # Function to clear output directory
 clear_output_dir() {
@@ -48,7 +49,11 @@ clear_output_dir "$OUTPUT_NOISE"
 $SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_NOISE" -e noise --noise-level 50
 
 # Run perspective experiment
-clear_output_dir "$OUTPUT_PERSEPECTIVE"
-$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_PERSEPECTIVE" -e perspective -p 50 --warp-by 10
+clear_output_dir "$OUTPUT_PERSPECTIVE"
+$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_PERSPECTIVE" -e perspective -p 50 --warp-by 10
+
+# Run tilt experiment
+clear_output_dir "$OUTPUT_TILT"
+$SCRIPT -i "$INPUT_DIR" -o "$OUTPUT_TILT" -e tilt -p 75 --max-tilt 10
 
 echo "All experiments completed. Check the output directories for results."

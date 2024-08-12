@@ -9,6 +9,7 @@ from experiments.monochrome import process_monochrome
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
 from experiments.perspective import process_perspective
+from experiments.tilt import process_tilt
 from experiments.timestamp import process_timestamp
 
 
@@ -23,6 +24,13 @@ def validate_percentage(value):
     ivalue = int(value)
     if ivalue < 0 or ivalue > 100:
         raise argparse.ArgumentTypeError(f"{value} is an invalid percentage value. Must be between 0 and 100.")
+    return ivalue
+
+
+def validate_degrees(value):
+    ivalue = int(value)
+    if ivalue < 0 or ivalue > 180:
+        raise argparse.ArgumentTypeError(f"{value} is an invalid angle value. Must be between 0 and 180.")
     return ivalue
 
 
@@ -46,7 +54,8 @@ def main():
 
     # Experiment selection
     parser.add_argument("-e", "--experiment", required=True,
-                        choices=["color-bands", "monochrome", "inverted", "no-gps", "timestamp", "noise", "perspective"],
+                        choices=["color-bands", "monochrome", "inverted", "no-gps",
+                                 "timestamp", "noise", "perspective", "tilt"],
                         help="Select the experiment to perform on the images.")
 
     # Color bands options
@@ -61,7 +70,7 @@ def main():
 
     # No-GPS/Monochrome options
     parser.add_argument("-p", "--percentage", type=validate_percentage, default=0,
-                        help="Percentage of images to remove GPS metadata from, make monochrome, or warp perspective for.")
+                        help="Percentage of images to change. Applies to monochrome, no-gps, perspective, and tilt.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -76,6 +85,10 @@ def main():
     # Perspective options
     parser.add_argument("-w", "--warp-by", type=validate_percentage, default=0,
                         help="Percentage of images to warp perspective for. 20% is significant.")
+
+    # Tilt options
+    parser.add_argument("-t", "--max-tilt", type=validate_degrees, default=0,
+                        help="Max tilt angle in degrees for the tilt experiment.")
 
     args = parser.parse_args()
 
@@ -116,6 +129,8 @@ def main():
         process_noise(input_images, args.output, args.noise_level)
     elif args.experiment == "perspective":
         process_perspective(input_images, args.output, args.percentage, args.warp_by)
+    elif args.experiment == "tilt":
+        process_tilt(input_images, args.output, args.percentage, args.max_tilt)
 
 
 if __name__ == "__main__":
