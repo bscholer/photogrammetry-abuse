@@ -78,6 +78,17 @@ python3 image_processing.py --experiment noise \
 --noise-level 25
 ```
 
+### Perspective Warp
+
+This experiment warps the perspective of a certain percentage of input images, by randomly selecting 4 points on the image and warping them by a provided `--warp-by` percentage.
+
+For example, to warp 50% of images by 20% (significant), run the following command:
+```bash
+python3 image_processing.py --experiment perspective \
+--input <directory with images> --output <output directory> \
+--percentage 50 --warp-by 20
+```
+
 ### Remove GPS
 
 This experiment removes the GPS data from a certain percentage of input images.
@@ -129,6 +140,11 @@ Here are some samples from the above example dataset, after running them through
 
 ### Noise - 50%
 ![DJI_0181](https://github.com/user-attachments/assets/49d27173-fccc-4025-aa6e-9b47549318ab)
+
+### Noise - 95%
+
+### Perspective Warp - Warp by 20%
+
 
 ### Remove GPS and Random Timestamps
 Both of these experiments only affect metadata, so the images look identical to the original.

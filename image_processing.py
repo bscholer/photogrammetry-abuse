@@ -8,6 +8,7 @@ from experiments.color_bands import process_color_bands
 from experiments.monochrome import process_monochrome
 from experiments.no_gps import process_no_gps
 from experiments.noise import process_noise
+from experiments.perspective import process_perspective
 from experiments.timestamp import process_timestamp
 
 
@@ -45,7 +46,7 @@ def main():
 
     # Experiment selection
     parser.add_argument("-e", "--experiment", required=True,
-                        choices=["color-bands", "monochrome", "inverted", "no-gps", "timestamp", "noise"],
+                        choices=["color-bands", "monochrome", "inverted", "no-gps", "timestamp", "noise", "perspective"],
                         help="Select the experiment to perform on the images.")
 
     # Color bands options
@@ -60,7 +61,7 @@ def main():
 
     # No-GPS/Monochrome options
     parser.add_argument("-p", "--percentage", type=validate_percentage, default=0,
-                        help="Percentage of images to remove GPS metadata from or make monochrome.")
+                        help="Percentage of images to remove GPS metadata from, make monochrome, or warp perspective for.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -71,6 +72,10 @@ def main():
     # Noise options
     parser.add_argument("--noise-level", type=validate_percentage, default=0,
                         help="Percentage of images to add noise to.")
+
+    # Perspective options
+    parser.add_argument("-w", "--warp-by", type=validate_percentage, default=0,
+                        help="Percentage of images to warp perspective for. 20% is significant.")
 
     args = parser.parse_args()
 
@@ -109,6 +114,8 @@ def main():
         process_timestamp(input_images, args.output, args.start_date, args.end_date)
     elif args.experiment == "noise":
         process_noise(input_images, args.output, args.noise_level)
+    elif args.experiment == "perspective":
+        process_perspective(input_images, args.output, args.percentage, args.warp_by)
 
 
 if __name__ == "__main__":
