@@ -224,6 +224,33 @@ While not _bad_, there is a noticeable degredadation in quality here, as we see 
 [Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/90a36b2b7d_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723604400&Signature=k/UoUFiUK3FI0jRUAljOftOOEj06Ox7hWzswRPMrZfPKL0+ZBU0p0K5bjZRXQPNyK9q6XY4WtrSIVuMKm3j5ylyOLvjCre/3Qhqt6VMXgiMwRNk9qAI/r58GGXnhoDDmoIGllhbSjlc5XAMPzapVEI4tpFJDR/vDPpIf0BLECfC2uVtaIID1IXQYxuBOwACJ1XKkwt5/Luy2QSSb7L20NDKmYFLdRsRAP8DnKsu+gqIwsw4EiM7OGYK3FjIcpDyfO4qQT+zGclgM01hVTbv2XQqFr7ll6LJf1D34dyK/k1fsla/iseh39gpIcWhoSIZAohaqIv3X2+UmYBLK7j8Nlg%3D%3D)
  | [View map in DroneDeploy](https://www.dronedeploy.com/app2/sites/66b7f6596bc3a8129fffc9cc/maps/66b90c05d00fbf3cb863f5aa?jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2YjkwYzBiZTQ1YjBmZjlhOGY0OGQ4NCIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.7uScjyZaoXNOwdBD6oFMBi3VtoIBnwgka-deDKWsxJOJgVSEmqo3I0pkuOSBrTc2J40P7cBARyeteiXxRT8pwA)
 
+### Perspective Warp - 5% Warp on 50% of Images
+
+It feels like I'm finally getting somewhere with breaking photogrammetry! Although, that said, this is still a pretty decent result for some pretty fouled up images. I'm impressed that it seems to have ignored the black borders around the photos.
+
+ <img width="750" alt="image" src="https://github.com/user-attachments/assets/a0f418dd-d9ae-45da-bbe0-8ea9f8672020">
+
+ [Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/a7ab1f6fcf_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723644000&Signature=aHCrqK5Nr33OaDlCXLpmLiPuf4SrZpejzXqpHIvo3MkIa51sKlOLm2PIeBAzuTDesz6g7+btdMP6gqSYcWkWkuNl0+UMGyKhQ5qWKNIUWFixp11qnchMKl1P62L1bZJXFA7i4958vG2zrOhcYXP2uKcpOX+sS7ziOj1m24aEtBTOeOIjbN6ResUAJFXtWAP3y1QWypznvv0Oea8dDBhJAswu/sngwQ1YfXMwFJBiHRUlzj6PYYg1SyQ5/M1kpFudyVMbv2QFJmrkf8sEaRNZ4Fk5mKT8GMqs1B4chlBxGqkd+zYi9is6TFBSaYjsd4FIXQCnBhGf0lDtD5nuM1g04g%3D%3D)
+  | [View map in DroneDeploy](https://www.dronedeploy.com/app2/sites/66b7f6596bc3a8129fffc9cc/maps/66b98f0ee42b6a0674e79d03?jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2Yjk4ZjExYTJhYWMxZGE3ZWI5NGQ1NSIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.M2lgvzcl9HaEuRdGPrzOC3GXsC8qXOKyNSvEgVf3MyQfwSRWyWh-ChSBQOcU9RT0P-FDKaiF8bGxoLyXDDNhcw)
+
+### Perspective Warp - 10% Warp on 75% of Images
+
+Seems like perspective warp will really do a number on photogrammetry! This map looks pretty terrible compared to the [original](#original-map)!
+
+<img width="682" alt="image" src="https://github.com/user-attachments/assets/27b896ef-a1e1-442a-8cbd-d9e2901f42d3">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/bc8ceec662_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723644000&Signature=BIFUThFGteUs3fiLOWpnlW9+G6YHfcZqa9fyAHaAcmgIbdswrs3vyIqS90aVARzPomFUkda9QAjDytWAoJsGYTMNB50AbW6zSsuM05UbEJVhjowQUABtKaDqTRmk2Qich/W3I7mN+J3s2VpdgoOwyNUhgwMroixWbj47zo5nEwBECZvHJ0xbGRwhQyCdmTqB+Q5K2R3/7NaPVQ58s/Sq33KINnPupVD8eAZOOXgroLCWE1jRHms1bhzK+gdAqSM4ZakRrM5RB3MsJqWIVbh2TJYiLNeqKsqIa5cmKgicp/kql57MA4dDNw2rwglFNpsZra1uPMhQ80DNC6fANy8pZQ%3D%3D)
+ | [View map in DroneDeploy](https://www.dronedeploy.com/app2/sites/66b7f6596bc3a8129fffc9cc/maps/66b99003e42b6a0674e79d05?jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2Yjk5MDA2ZjI4M2MwY2U3ZTgzOWQ5MiIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.CF6L0NSrACtC0VKzn7drhm16McSFfscdK5muAuNucVYw1DysAlJTRWbbJu__Dr2iiOOB2gyxMbrRUs705I4Y8A)
+
+### Tilt - Between -10° and 10° - 75% of Images
+
+Interestingly, this model turned out surprisingly good! However, you can really clearly see the black boundaries from the photo painted onto the roof. I would have expected something like this for the perspective warp experiments, but we see it in full effect here!
+
+<img width="824" alt="image" src="https://github.com/user-attachments/assets/119c9dd8-164f-42ab-ba30-4e70e46a36c2">
+
+[Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/3d062ed320_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723644000&Signature=HpwQlpto2KtiDrstXUcHjSdMv+6EIAM5W8Znb0+kMe9vGOJ1hafsXlAiFF+E8Jkp3lQGPe5huvtW4R6YBfh3rmCXRIjIuATjZgtOlGZnZnc24D0fS0W1RAbrQZtlBXiG3ha7rrHIuHs/fmFkTY7f5nNB8nOq54xAWpjTdk+O7A66Rc6DM09UxIz3zGm5br+x6z8FADFJQSwLxmXUcIdHw4vjB6mNk/gmqCX6EOedREBHl/76CkYYItvOtvlvpqNEFwLbKAjKPaFWNgGF+zrFHtrKk0tYn3+2CeHjSGRCxcXOeXkKwADcoBcWmUsbYoHYeuEh1pIuf5HOYg4rV7acqw%3D%3D)
+ | [View map in DroneDeploy](https://www.dronedeploy.com/app2/sites/66b7f6596bc3a8129fffc9cc/maps/66b99754e42b6a0674e79d07?jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2Yjk5NzU1MTdkZDkzMjJhNjQxMzc5NCIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.PcyOfdQ9Mz5LNx3k-pihNWWk8I-G26Mu9uvoFkF01iW0oo5h8RaLxeJW8AreW8NAWt4HGZurfF86P9z3OR_UBQ)
+
 ### Remove GPS and Random Timestamps
 
 Unfortunately, DroneDeploy is too smart, and the uploader doesn't accept images weird spread out timestamps, or images without GPS metadata :(. Might try manually uploading these experiments via the [Map Processing API](https://help.dronedeploy.com/hc/en-us/articles/1500004963742-Map-Processing-API) at some point, but nothing for now.
