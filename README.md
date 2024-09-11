@@ -130,6 +130,8 @@ python3 image_processing.py --experiment set-gps \
 --percentage 100 --lat 44.7471 --lng -85.54547 --max-wiggle 50
 ```
 
+_Note: When a `--lat` and `--lng` are specified, the altitude is passed through with no change. Future work may include the ability to modify the altitude._
+
 ### Remove Pose Metadata
 
 This experiment removes the pose metadata from a certain percentage of input images.

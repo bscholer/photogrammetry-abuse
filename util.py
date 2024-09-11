@@ -24,6 +24,12 @@ def save_without_thumbnail(img, output_path, gps_coords=None, timestamp_str=None
             piexif.GPSIFD.GPSLongitudeRef: 'E' if lng >= 0 else 'W',
             piexif.GPSIFD.GPSLongitude: _convert_to_dms(abs(lng))
         }
+
+        # Preserve the altitude if it exists
+        if 'GPS' in exif_data and piexif.GPSIFD.GPSAltitude in exif_data['GPS']:
+            gps_ifd[piexif.GPSIFD.GPSAltitude] = exif_data['GPS'][piexif.GPSIFD.GPSAltitude]
+            gps_ifd[piexif.GPSIFD.GPSAltitudeRef] = exif_data['GPS'][piexif.GPSIFD.GPSAltitudeRef]
+
         exif_data['GPS'] = gps_ifd
 
     # Remove thumbnail and preview image data
