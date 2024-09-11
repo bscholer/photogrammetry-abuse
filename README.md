@@ -123,6 +123,13 @@ python3 image_processing.py --experiment set-gps \
 --percentage 100 --lat 44.7471 --lng -85.54547
 ```
 
+To set the GPS data of 100% of images to 44.7471° N, 85.54547° W, randomly moved within a 50 meter radius, run the following command:
+```bash
+python3 image_processing.py --experiment set-gps \
+--input <directory with images> --output <output directory> \
+--percentage 100 --lat 44.7471 --lng -85.54547 --max-wiggle 50
+```
+
 ### Remove Pose Metadata
 
 This experiment removes the pose metadata from a certain percentage of input images.

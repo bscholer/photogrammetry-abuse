@@ -76,6 +76,7 @@ def main():
     # GPS replacement option
     parser.add_argument("--lat", type=float, help="Latitude for GPS data replacement.")
     parser.add_argument("--lng", type=float, help="Longitude for GPS data replacement.")
+    parser.add_argument("--max-wiggle", type=float, default=0.0, help="Maximum distance in meters to randomly vary the GPS coordinates.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -112,6 +113,9 @@ def main():
 
     if args.experiment == "set-gps" and (args.lat is None or args.lng is None):
         print(f"--lat and/or --lng not set, removing GPS metadata from {args.percentage}% of images.")
+    
+    if args.experiment == "set-gps" and args.lat and args.lng:
+        print(f"Setting GPS coordinates to ({args.lat}, {args.lng}) for {args.percentage}% of images, with {args.max_wiggle} meters of variation max.")
 
     # Collect all image files from the input directory with specified types
     image_extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG']
@@ -130,7 +134,7 @@ def main():
     elif args.experiment == "inverted":
         process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "set-gps":
-        process_set_gps(input_images, args.output, args.percentage, args.lat, args.lng)
+        process_set_gps(input_images, args.output, args.percentage, args.lat, args.lng, args.max_wiggle)
     elif args.experiment == "no-pose":
         process_no_pose(input_images, args.output, args.percentage)
     elif args.experiment == "timestamp":
