@@ -105,15 +105,22 @@ python3 image_processing.py --experiment tilt \
 --percentage 75 --max-tilt 10
 ```
 
-### Remove GPS
+### Change GPS
 
-This experiment removes the GPS data from a certain percentage of input images.
+This experiment edits or removes GPS data from a certain percentage of input images.
 
 For example, to remove GPS data from 50% of images, run the following command:
 ```bash
-python3 image_processing.py --experiment no-gps \
+python3 image_processing.py --experiment set-gps \
 --input <directory with images> --output <output directory> \
 --percentage 50
+```
+
+To set the GPS data of 100% of images to 44.7471° N, 85.54547° W, run the following command:
+```bash
+python3 image_processing.py --experiment set-gps \
+--input <directory with images> --output <output directory> \
+--percentage 100 --lat 44.7471 --lng -85.54547
 ```
 
 ### Remove Pose Metadata
@@ -191,8 +198,8 @@ Here are some samples from the above example dataset, after running them through
 ### Tilt - Random between -10° and 10°
 ![tilted_DJI_0181](https://github.com/user-attachments/assets/0b168df3-0f6a-4396-ae2f-f1c6ac0edf61)
 
-### Remove GPS and Random Timestamps
-Both of these experiments only affect metadata, so the images look identical to the original.
+### Set GPS, Remove Pose, and Random Timestamps
+All of these experiments only affect metadata, so the images look identical to the original.
 
 ## Resultant Maps
 
@@ -281,7 +288,7 @@ Interestingly, this model turned out surprisingly good! However, you can really 
 [Processing Report](https://storage.googleapis.com/dronedeploy-assets-prod/3d062ed320_C2FDB7A8DCOPENPIPELINE/report.pdf?GoogleAccessId=web-sa-prod@dronedeploy-public.iam.gserviceaccount.com&Expires=1723644000&Signature=HpwQlpto2KtiDrstXUcHjSdMv+6EIAM5W8Znb0+kMe9vGOJ1hafsXlAiFF+E8Jkp3lQGPe5huvtW4R6YBfh3rmCXRIjIuATjZgtOlGZnZnc24D0fS0W1RAbrQZtlBXiG3ha7rrHIuHs/fmFkTY7f5nNB8nOq54xAWpjTdk+O7A66Rc6DM09UxIz3zGm5br+x6z8FADFJQSwLxmXUcIdHw4vjB6mNk/gmqCX6EOedREBHl/76CkYYItvOtvlvpqNEFwLbKAjKPaFWNgGF+zrFHtrKk0tYn3+2CeHjSGRCxcXOeXkKwADcoBcWmUsbYoHYeuEh1pIuf5HOYg4rV7acqw%3D%3D)
  | [View map in DroneDeploy](https://www.dronedeploy.com/app2/sites/66b7f6596bc3a8129fffc9cc/maps/66b99754e42b6a0674e79d07?jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6IjY2Yjk5NzU1MTdkZDkzMjJhNjQxMzc5NCIsInR5cGUiOiJQdWJsaWNTaGFyZVYyIiwiYWNjZXNzX3R5cGUiOiJwbGFuIn0.PcyOfdQ9Mz5LNx3k-pihNWWk8I-G26Mu9uvoFkF01iW0oo5h8RaLxeJW8AreW8NAWt4HGZurfF86P9z3OR_UBQ)
 
-### Remove GPS and Random Timestamps
+### Set GPS and Random Timestamps
 
-Unfortunately, DroneDeploy is too smart, and the uploader doesn't accept images weird spread out timestamps, or images without GPS metadata :(. Might try manually uploading these experiments via the [Map Processing API](https://help.dronedeploy.com/hc/en-us/articles/1500004963742-Map-Processing-API) at some point, but nothing for now.
+Unfortunately, DroneDeploy is too smart, and the uploader doesn't accept images weird spread out timestamps, images without GPS metadata, or images that all have the same GPS location :(. Might try manually uploading these experiments via the [Map Processing API](https://help.dronedeploy.com/hc/en-us/articles/1500004963742-Map-Processing-API) at some point, but nothing for now.
 
