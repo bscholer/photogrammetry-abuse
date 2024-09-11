@@ -1,12 +1,30 @@
 import piexif
 
 
-def save_without_thumbnail(img, output_path, include_gps=True, timestamp_str=None):
+def save_without_thumbnail(img, output_path, gps_coords=None, timestamp_str=None):
+    """
+    Save an image without thumbnail and preview image data, and optionally update GPS and timestamp metadata.
+
+    :param img: PIL.Image object
+    :param output_path: str, path to save the output image
+    :param gps_coords: tuple, (latitude, longitude) to update GPS metadata, or None to maintain GPS data. An empty tuple () will remove GPS data.
+    :param timestamp_str: str, new timestamp in ISO format, or None to maintain the original timestamp
+    """
     exif_data = piexif.load(img.info.get('exif', b''))
 
-    # Remove GPS data if include_gps is False
-    if not include_gps and 'GPS' in exif_data:
-        del exif_data['GPS']
+    # Handle GPS data based on gps_coords
+    if gps_coords == ():  # Remove GPS data if gps_coords is an empty tuple
+        if 'GPS' in exif_data:
+            del exif_data['GPS']
+    elif gps_coords is not None:  # Replace GPS data with provided lat/lng if gps_coords is not None
+        lat, lng = gps_coords
+        gps_ifd = {
+            piexif.GPSIFD.GPSLatitudeRef: 'N' if lat >= 0 else 'S',
+            piexif.GPSIFD.GPSLatitude: _convert_to_dms(abs(lat)),
+            piexif.GPSIFD.GPSLongitudeRef: 'E' if lng >= 0 else 'W',
+            piexif.GPSIFD.GPSLongitude: _convert_to_dms(abs(lng))
+        }
+        exif_data['GPS'] = gps_ifd
 
     # Remove thumbnail and preview image data
     if '1st' in exif_data:
@@ -76,3 +94,10 @@ def save_without_pose_metadata(img, output_path, include_pose=True, timestamp_st
     exif_filtered = piexif.dump(exif_data)
     img.save(output_path, exif=exif_filtered)
 
+
+def _convert_to_dms(value):
+    """Convert latitude/longitude to degrees, minutes, seconds format."""
+    degrees = int(value)
+    minutes = int((value - degrees) * 60)
+    seconds = (value - degrees - minutes / 60) * 3600
+    return [(degrees, 1), (minutes, 1), (int(seconds * 100), 100)]

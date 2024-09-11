@@ -6,10 +6,10 @@ from pathlib import Path
 from experiments.inverted import process_inverted
 from experiments.color_bands import process_color_bands
 from experiments.monochrome import process_monochrome
-from experiments.no_gps import process_no_gps
 from experiments.no_pose import process_no_pose
 from experiments.noise import process_noise
 from experiments.perspective import process_perspective
+from experiments.set_gps import process_set_gps
 from experiments.tilt import process_tilt
 from experiments.timestamp import process_timestamp
 
@@ -55,7 +55,7 @@ def main():
 
     # Experiment selection
     parser.add_argument("-e", "--experiment", required=True,
-                        choices=["color-bands", "monochrome", "inverted", "no-gps",
+                        choices=["color-bands", "monochrome", "inverted", "set-gps",
                                  "timestamp", "noise", "perspective", "tilt", "no-pose"],
                         help="Select the experiment to perform on the images.")
 
@@ -71,7 +71,11 @@ def main():
 
     # Experiments with percentage options
     parser.add_argument("-p", "--percentage", type=validate_percentage, default=0,
-                        help="Percentage of images to change. Applies to monochrome, no-gps, perspective, tilt, and pose-removal.")
+                        help="Percentage of images to change. Applies to monochrome, set-gps, perspective, tilt, and pose-removal.")
+
+    # GPS replacement option
+    parser.add_argument("--lat", type=float, help="Latitude for GPS data replacement.")
+    parser.add_argument("--lng", type=float, help="Longitude for GPS data replacement.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -106,6 +110,9 @@ def main():
         print("Error: The sum of --flip and --mirror percentages cannot exceed 100.")
         sys.exit(1)
 
+    if args.experiment == "set-gps" and (args.lat is None or args.lng is None):
+        print(f"--lat and/or --lng not set, removing GPS metadata from {args.percentage}% of images.")
+
     # Collect all image files from the input directory with specified types
     image_extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG']
     input_images = []
@@ -122,8 +129,8 @@ def main():
         process_monochrome(input_images, args.output, args.percentage)
     elif args.experiment == "inverted":
         process_inverted(input_images, args.output, args.flip, args.mirror)
-    elif args.experiment == "no-gps":
-        process_no_gps(input_images, args.output, args.percentage)
+    elif args.experiment == "set-gps":
+        process_set_gps(input_images, args.output, args.percentage, args.lat, args.lng)
     elif args.experiment == "no-pose":
         process_no_pose(input_images, args.output, args.percentage)
     elif args.experiment == "timestamp":
