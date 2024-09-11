@@ -111,7 +111,30 @@ This experiment removes the GPS data from a certain percentage of input images.
 
 For example, to remove GPS data from 50% of images, run the following command:
 ```bash
-python3 image_processing.py --experiment remove-gps \
+python3 image_processing.py --experiment no-gps \
+--input <directory with images> --output <output directory> \
+--percentage 50
+```
+
+### Remove Pose Metadata
+
+This experiment removes the pose metadata from a certain percentage of input images.
+
+Specifically, these fields are removed from the EXIF data:
+
+- Orientation: Horizontal (normal)
+- Gimbal Degree
+- Gimbal Roll Degree
+- Gimbal Yaw Degree
+- Gimbal Pitch Degree
+- Flight Degree
+- Flight Roll Degree
+- Flight Yaw Degree
+- Flight Pitch Degree
+
+For example, to remove pose data from 50% of images, run the following command:
+```bash
+python3 image_processing.py --experiment no-pose \
 --input <directory with images> --output <output directory> \
 --percentage 50
 ```

@@ -7,6 +7,7 @@ from experiments.inverted import process_inverted
 from experiments.color_bands import process_color_bands
 from experiments.monochrome import process_monochrome
 from experiments.no_gps import process_no_gps
+from experiments.no_pose import process_no_pose
 from experiments.noise import process_noise
 from experiments.perspective import process_perspective
 from experiments.tilt import process_tilt
@@ -55,7 +56,7 @@ def main():
     # Experiment selection
     parser.add_argument("-e", "--experiment", required=True,
                         choices=["color-bands", "monochrome", "inverted", "no-gps",
-                                 "timestamp", "noise", "perspective", "tilt"],
+                                 "timestamp", "noise", "perspective", "tilt", "no-pose"],
                         help="Select the experiment to perform on the images.")
 
     # Color bands options
@@ -68,9 +69,9 @@ def main():
     parser.add_argument("-m", "--mirror", type=validate_percentage, default=0,
                         help="Percentage of images to mirror horizontally.")
 
-    # No-GPS/Monochrome options
+    # Experiments with percentage options
     parser.add_argument("-p", "--percentage", type=validate_percentage, default=0,
-                        help="Percentage of images to change. Applies to monochrome, no-gps, perspective, and tilt.")
+                        help="Percentage of images to change. Applies to monochrome, no-gps, perspective, tilt, and pose-removal.")
 
     # Timestamp options
     parser.add_argument("--start-date", type=validate_iso_date,
@@ -123,6 +124,8 @@ def main():
         process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "no-gps":
         process_no_gps(input_images, args.output, args.percentage)
+    elif args.experiment == "no-pose":
+        process_no_pose(input_images, args.output, args.percentage)
     elif args.experiment == "timestamp":
         process_timestamp(input_images, args.output, args.start_date, args.end_date)
     elif args.experiment == "noise":

@@ -30,13 +30,4 @@ def process_no_gps(input_images, output_dir, gps_removal_percentage):
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
-        #
-        # exif_data = img.info.get('exif', None)
-        # exif_dict = piexif.load(exif_data) if exif_data else {}
-        #
-        # # Remove GPS data from a percentage of images
-        #     image_name = f"no_gps_{image_name}"
-        #     exif_dict.pop('GPS', None)
-        #
-        # # Save the processed image with the updated EXIF data
-        # exif_bytes = piexif.dump(exif_dict)
+
