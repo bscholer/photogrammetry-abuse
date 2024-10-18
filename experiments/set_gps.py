@@ -13,6 +13,7 @@ geod = Geod(ellps="WGS84")
 
 
 def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, lng=None, max_wiggle=0.0):
+def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, lng=None, alt=None, max_wiggle=0.0) -> str:
     stats = {
         'gps_modified': 0,
         'unchanged': 0,
@@ -45,7 +46,10 @@ def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, l
             else:
                 # Apply random wiggle to lat/lng, if max_wiggle is set
                 new_lat, new_lng = wiggle_coordinates(lat, lng, max_wiggle)
-                gps_coords = (new_lat, new_lng)
+                if alt is not None:
+                    gps_coords = (new_lat, new_lng, alt)
+                else:
+                    gps_coords = (new_lat, new_lng)
         else:
             stats['unchanged'] += 1
             image_name = img_path.name
