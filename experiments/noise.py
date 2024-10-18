@@ -7,7 +7,7 @@ from tqdm import tqdm
 from util import save_without_thumbnail
 
 
-def process_noise(input_images, output_dir, noise_level):
+def process_noise(input_images, output_dir, noise_level) -> str:
     for img_path in tqdm(input_images, desc="Adding noise to images"):
         img = Image.open(img_path)
         img_array = np.array(img)
@@ -23,3 +23,6 @@ def process_noise(input_images, output_dir, noise_level):
         noisy_img.info = img.info
         output_path = Path(output_dir) / img_path.name
         save_without_thumbnail(noisy_img, output_path)
+
+    name = f"Noise ({noise_level}%)"
+    return name

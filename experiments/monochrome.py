@@ -7,7 +7,7 @@ from tqdm import tqdm
 from util import save_without_thumbnail
 
 
-def process_monochrome(input_images, output_dir, monochrome_percentage):
+def process_monochrome(input_images, output_dir, monochrome_percentage) -> str:
     stats = {
         'monochrome': 0,
         'unchanged': 0,
@@ -29,6 +29,9 @@ def process_monochrome(input_images, output_dir, monochrome_percentage):
         output_path = Path(output_dir) / f"{filename}.jpg"
         save_without_thumbnail(img, output_path)
 
+    name = f"Monochrome ({monochrome_percentage}%)"
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
+
+    return name

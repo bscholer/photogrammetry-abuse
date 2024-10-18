@@ -7,7 +7,7 @@ from tqdm import tqdm
 from util import save_without_thumbnail
 
 
-def process_inverted(input_images, output_dir, flip_percentage, mirror_percentage):
+def process_inverted(input_images, output_dir, flip_percentage, mirror_percentage) -> str:
     stats = {
         'flipped': 0,
         'mirrored': 0,
@@ -42,6 +42,9 @@ def process_inverted(input_images, output_dir, flip_percentage, mirror_percentag
         output_path = Path(output_dir) / f"{filename}.jpg"
         save_without_thumbnail(img, output_path)
 
+    name = f"Inverted (Flip: {flip_percentage}%, Mirror: {mirror_percentage}%)"
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
+
+    return name

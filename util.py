@@ -1,3 +1,4 @@
+from pathlib import Path
 import piexif
 
 
@@ -17,7 +18,7 @@ def save_without_thumbnail(img, output_path, gps_coords=None, timestamp_str=None
         if 'GPS' in exif_data:
             del exif_data['GPS']
     elif gps_coords is not None:  # Replace GPS data with provided lat/lng if gps_coords is not None
-        lat, lng = gps_coords
+        lat, lng, alt = gps_coords
         gps_ifd = {
             piexif.GPSIFD.GPSLatitudeRef: 'N' if lat >= 0 else 'S',
             piexif.GPSIFD.GPSLatitude: _convert_to_dms(abs(lat)),
@@ -25,10 +26,12 @@ def save_without_thumbnail(img, output_path, gps_coords=None, timestamp_str=None
             piexif.GPSIFD.GPSLongitude: _convert_to_dms(abs(lng))
         }
 
-        # Preserve the altitude if it exists
+        # Preserve the altitude, or take it from gps_coords if available
         if 'GPS' in exif_data and piexif.GPSIFD.GPSAltitude in exif_data['GPS']:
             gps_ifd[piexif.GPSIFD.GPSAltitude] = exif_data['GPS'][piexif.GPSIFD.GPSAltitude]
             gps_ifd[piexif.GPSIFD.GPSAltitudeRef] = exif_data['GPS'][piexif.GPSIFD.GPSAltitudeRef]
+        elif len(gps_coords) == 3:
+            gps_ifd[piexif.GPSIFD.GPSAltitude] = (int(alt * 100), 100)
 
         exif_data['GPS'] = gps_ifd
 
@@ -107,3 +110,35 @@ def _convert_to_dms(value):
     minutes = int((value - degrees) * 60)
     seconds = (value - degrees - minutes / 60) * 3600
     return [(degrees, 1), (minutes, 1), (int(seconds * 100), 100)]
+
+
+def _convert_to_decimal(coordinate, ref):
+    """
+    Convert the coordinate to decimal format and adjust for direction.
+    
+    Parameters:
+    - coordinate: Tuple of (degrees, minutes, seconds) in (numerator, denominator) format
+    - ref: 'N', 'S', 'E', 'W' indicating the direction
+    
+    Returns:
+    - Decimal value of the coordinate, adjusted for direction.
+    """
+    degrees = coordinate[0][0] / coordinate[0][1]
+    minutes = coordinate[1][0] / coordinate[1][1]
+    seconds = coordinate[2][0] / coordinate[2][1]
+    
+    decimal = degrees + (minutes / 60.0) + (seconds / 3600.0)
+    # Apply negative if South or West
+    if ref in ['S', 'W']:
+        decimal = -decimal
+    return decimal
+
+
+def collect_images(image_dir) -> list[Path]:
+    # Collect all image files from the input directory with specified types
+    image_extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG']
+    input_images = []
+    for ext in image_extensions:
+        input_images.extend(list(Path(image_dir).glob(f"*{ext}")))
+
+    return input_images

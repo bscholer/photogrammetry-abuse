@@ -1,8 +1,10 @@
 import argparse
+import tempfile
 import os
 import sys
 from pathlib import Path
 
+from drone_deploy_upload import upload_to_dd
 from experiments.inverted import process_inverted
 from experiments.color_bands import process_color_bands
 from experiments.monochrome import process_monochrome
@@ -12,6 +14,7 @@ from experiments.perspective import process_perspective
 from experiments.set_gps import process_set_gps
 from experiments.tilt import process_tilt
 from experiments.timestamp import process_timestamp
+from util import collect_images
 
 
 def validate_directory(path):
@@ -50,7 +53,7 @@ def main():
     # Input and output directories
     parser.add_argument("-i", "--input", required=True, type=validate_directory,
                         help="Path to the input directory containing *.jpg, *.jpeg images.")
-    parser.add_argument("-o", "--output", required=True, type=str,
+    parser.add_argument("-o", "--output", type=str,
                         help="Path to the output directory where processed images will be saved.")
 
     # Experiment selection
@@ -76,6 +79,7 @@ def main():
     # GPS replacement option
     parser.add_argument("--lat", type=float, help="Latitude for GPS data replacement.")
     parser.add_argument("--lng", type=float, help="Longitude for GPS data replacement.")
+    parser.add_argument('--altitude', type=float, help="Altitude for GPS data replacement.")
     parser.add_argument("--max-wiggle", type=float, default=0.0, help="Maximum distance in meters to randomly vary the GPS coordinates.")
 
     # Timestamp options
@@ -95,6 +99,10 @@ def main():
     # Tilt options
     parser.add_argument("-t", "--max-tilt", type=validate_degrees, default=0,
                         help="Max tilt angle in degrees for the tilt experiment.")
+
+    # DroneDeploy upload options
+    parser.add_argument("--dd-project-id", help="Upload images to the listed DroneDeploy Project ID, using the DD_API_KEY environment variable.")
+    parser.add_argument("--dd-plan-name", type=str, help="Name of the plan to create and upload images to.")
 
     args = parser.parse_args()
 
@@ -116,35 +124,51 @@ def main():
     
     if args.experiment == "set-gps" and args.lat and args.lng:
         print(f"Setting GPS coordinates to ({args.lat}, {args.lng}) for {args.percentage}% of images, with {args.max_wiggle} meters of variation max.")
+        if args.altitude:
+            print(f"Setting altitude to {args.altitude} meters.")
+        else:
+            print("Passing through altitude from original images.")
 
-    # Collect all image files from the input directory with specified types
-    image_extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG']
-    input_images = []
-    for ext in image_extensions:
-        input_images.extend(list(Path(args.input).glob(f"*{ext}")))
+    if args.dd_project_id and not os.getenv("DD_API_KEY"):
+        print("Error: DD_API_KEY environment variable not set.")
+        sys.exit(1)
 
-    # Create output directory if it doesn't exist
+    if not args.output and not args.dd_project_id:
+        print("Error: --output or --dd-project-id must be specified.")
+        sys.exit(1)
+
+    input_images = collect_images(args.input)
+
+    # Create output directory if it doesn't exist. If uploading to DD, and no output directory is specified, make a temporary directory.
+    if args.dd_project_id and not args.output:
+        temp_dir = tempfile.TemporaryDirectory()
+        args.output = temp_dir.name
+        print(f"Output directory not specified. Using temporary directory {args.output}.")
     Path(args.output).mkdir(parents=True, exist_ok=True)
 
+    default_name = args.experiment
     # Execute the selected experiment
     if args.experiment == "color-bands":
-        process_color_bands(input_images, args.output, args.bands_to_keep)
+        default_name = process_color_bands(input_images, args.output, args.bands_to_keep)
     if args.experiment == "monochrome":
-        process_monochrome(input_images, args.output, args.percentage)
+        default_name = process_monochrome(input_images, args.output, args.percentage)
     elif args.experiment == "inverted":
-        process_inverted(input_images, args.output, args.flip, args.mirror)
+        default_name = process_inverted(input_images, args.output, args.flip, args.mirror)
     elif args.experiment == "set-gps":
-        process_set_gps(input_images, args.output, args.percentage, args.lat, args.lng, args.max_wiggle)
+        default_name = process_set_gps(input_images, args.output, args.percentage, args.lat, args.lng, args.altitude, args.max_wiggle)
     elif args.experiment == "no-pose":
-        process_no_pose(input_images, args.output, args.percentage)
+        default_name = process_no_pose(input_images, args.output, args.percentage)
     elif args.experiment == "timestamp":
-        process_timestamp(input_images, args.output, args.start_date, args.end_date)
+        default_name = process_timestamp(input_images, args.output, args.start_date, args.end_date)
     elif args.experiment == "noise":
-        process_noise(input_images, args.output, args.noise_level)
+        default_name = process_noise(input_images, args.output, args.noise_level)
     elif args.experiment == "perspective":
-        process_perspective(input_images, args.output, args.percentage, args.warp_by)
+        default_name = process_perspective(input_images, args.output, args.percentage, args.warp_by)
     elif args.experiment == "tilt":
-        process_tilt(input_images, args.output, args.percentage, args.max_tilt)
+        default_name = process_tilt(input_images, args.output, args.percentage, args.max_tilt)
+
+    if args.dd_project_id:
+        upload_to_dd(args.dd_project_id, args.output, args.dd_plan_name or default_name)
 
 
 if __name__ == "__main__":

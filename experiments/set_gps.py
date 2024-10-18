@@ -12,7 +12,6 @@ from util import save_without_thumbnail
 geod = Geod(ellps="WGS84")
 
 
-def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, lng=None, max_wiggle=0.0):
 def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, lng=None, alt=None, max_wiggle=0.0) -> str:
     stats = {
         'gps_modified': 0,
@@ -58,7 +57,15 @@ def process_set_gps(input_images, output_dir, gps_change_percentage, lat=None, l
         output_path = Path(output_dir) / image_name
         save_without_thumbnail(img, output_path, gps_coords=gps_coords)
 
+    if lat is None or lng is None:
+        name = f"Remove GPS ({gps_change_percentage}%)"
+    elif alt:
+        name = f"Random GPS ({gps_change_percentage}%, {lat}, {lng}, alt={alt}, {max_wiggle}m radius)"
+    else:
+        name = f"Random GPS ({gps_change_percentage}%, {lat}, {lng}, {max_wiggle}m radius)"
+
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
 
+    return name

@@ -8,7 +8,7 @@ from tqdm import tqdm
 from util import save_without_pose_metadata
 
 
-def process_no_pose(input_images, output_dir, pose_removal_percentage):
+def process_no_pose(input_images, output_dir, pose_removal_percentage) -> str:
     stats = {
         'pose_removed': 0,
         'unchanged': 0,
@@ -28,7 +28,10 @@ def process_no_pose(input_images, output_dir, pose_removal_percentage):
         output_path = Path(output_dir) / image_name
         save_without_pose_metadata(img, output_path, include_pose=not should_remove_pose)
 
+    name = f"No Pose Metadata ({pose_removal_percentage}%)"
     # Output stats
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
+
+    return name

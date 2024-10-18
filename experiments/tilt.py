@@ -28,7 +28,10 @@ def process_tilt(input_images, output_dir, tilt_percentage, max_tilt):
         output_path = Path(output_dir) / f"{filename}.jpg"
         save_without_thumbnail(img, output_path)
 
+    name = f"Tilt ({tilt_percentage}% by {max_tilt} degrees)"
+
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
 
+    return name

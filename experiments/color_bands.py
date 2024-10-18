@@ -7,7 +7,8 @@ from tqdm import tqdm
 from util import save_without_thumbnail
 
 
-def process_color_bands(input_images, output_dir, bands_to_keep):
+def process_color_bands(input_images, output_dir, bands_to_keep) -> str:
+    name = f"Color Bands ({bands_to_keep.upper()})"
     for img_path in tqdm(input_images, desc='Color manipulation'):
         img = Image.open(img_path)
         r, g, b = img.split()
@@ -24,3 +25,4 @@ def process_color_bands(input_images, output_dir, bands_to_keep):
         output_path = Path(output_dir) / img_path.name
         save_without_thumbnail(recolored_img, output_path)
 
+    return name

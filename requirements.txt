@@ -7,3 +7,7 @@ pytest
 piexif
 tqdm
 pyproj
+shapely
+requests
+fileio-wrapper
+

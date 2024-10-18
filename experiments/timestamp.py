@@ -23,3 +23,6 @@ def process_timestamp(input_images, output_dir, start_date, end_date):
         # Save the processed image
         output_path = Path(output_dir) / img_path.name
         save_without_thumbnail(img, output_path, timestamp_str=timestamp_str)
+
+    name = f"Timestamp ({start_date} to {end_date})"
+    return name

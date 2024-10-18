@@ -21,7 +21,7 @@ def find_coeffs(pa, pb):
     return coeffs
 
 
-def process_perspective(input_images, output_dir, warp_percentage, warp_by_percentage):
+def process_perspective(input_images, output_dir, warp_percentage, warp_by_percentage) -> str:
     stats = {
         'warped': 0,
         'unchanged': 0,
@@ -69,6 +69,9 @@ def process_perspective(input_images, output_dir, warp_percentage, warp_by_perce
         output_path = Path(output_dir) / f"{filename}.jpg"
         save_without_thumbnail(img, output_path)
 
+    name = f"Perspective Warp ({warp_percentage}% by {warp_by_percentage}%)"
     print("Stats")
     for key, value in stats.items():
         print(f"{key}: {value}")
+
+    return name
