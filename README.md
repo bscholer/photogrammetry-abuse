@@ -166,6 +166,22 @@ python3 image_processing.py --experiment timestamp \
 --start-date 2024-01-01 --end-date 2024-01-02
 ```
 
+### Upload to DroneDeploy
+
+There is support for automatically uploading modified images to DroneDeploy for processing afterwards. To use this, set the `DD_API_KEY` environment variable to your DroneDeploy API key, and run any of the experiments with the --dd-project-id flag set to the ID of the project you want to upload to.
+
+If you don't care about the output images, you can omit the `--output` flag, which will store the images in a temporary directory before uploading.
+
+You can also specify a `--dd-plan-name`. If one is not provided, a sensical name will be generated based on the experiment and parameters.
+
+For example:
+```bash
+python3 image_processing.py --experiment no-pose \
+--dd-project-id <project id> \
+--input <directory with images> \
+--percentage 50
+```
+
 ### Trying all of them
 
 To try all of the experiments at once, open `test.sh`, and modify the `INPUT_DIR` and `OUTPUT_BASE_DIR` variables to point to the directories with the images you want to process. Then run the script:
@@ -299,5 +315,5 @@ Interestingly, this model turned out surprisingly good! However, you can really 
 
 ### Set GPS and Random Timestamps
 
-Unfortunately, DroneDeploy is too smart, and the uploader doesn't accept images weird spread out timestamps, images without GPS metadata, or images that all have the same GPS location :(. Might try manually uploading these experiments via the [Map Processing API](https://help.dronedeploy.com/hc/en-us/articles/1500004963742-Map-Processing-API) at some point, but nothing for now.
+Unfortunately, DroneDeploy is too smart, and the uploader doesn't accept images weird spread out timestamps, images without GPS metadata, or images that all have the same GPS location :(.
 
