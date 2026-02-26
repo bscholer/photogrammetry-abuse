@@ -1,8 +1,8 @@
 # Photogrammetry Abuse
 
-This repo contains a framework for messing with images in a variety of ways, in an attempt to make DroneDeploy's photogrammetry engine do weird things. 
+This repo contains a framework with a variety of tools for messing with images, in an attempt to make photogrammetry engines do weird things. 
 
-This doesn't really have much practical purpose, and was really just intended to be a fun experiment.
+While most tools are not particularly useful in day-to-day applications, the `set-gps` tool can be handy for adding geotags to images.
 
 ![image](https://github.com/user-attachments/assets/2381e001-3f92-4ee0-80aa-714ce7e22a01)
 
